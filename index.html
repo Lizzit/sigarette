@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gestione Sigarette</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<!-- PARTE SUPERIORE -->
+		<header class="top-bar">
+			<form id="filter-form" class="filter-form">
+				<select id="filter-brand" name="brand">
+					<option value="">Marca</option>
+				</select>
+				<select id="filter-package" name="package">
+					<option value="">Tipo pacchetto</option>
+					<option value="morbido">Morbido</option>
+					<option value="duro">Duro</option>
+				</select>
+				<button type="button" id="clear-filter" class="btn small">Pulisci filtro</button>
+			</form>
+			<div class="top-buttons">
+				<button type="button" id="edit-list" class="btn">Modifica lista</button>
+				<button type="button" id="export-list" class="btn">Esporta lista</button>
+				<button type="button" id="import-list" class="btn">Importa lista</button>
+				<button type="button" id="export-settings" class="btn">Esporta impostazioni</button>
+				<button type="button" id="import-settings" class="btn">Importa impostazioni</button>
+				<button type="button" id="view-options" class="btn">Opzioni visualizzazione</button>
+			</div>
+		</header>
+
+		<!-- PARTE CENTRALE -->
+		<main class="main-list">
+			<div id="sections-container">
+				<!-- Le sezioni e la lista saranno generate dinamicamente -->
+			</div>
+		</main>
+
+		<!-- PARTE INFERIORE -->
+		<footer class="bottom-bar">
+			<button type="button" id="invert-selection" class="btn">Invertire selezione</button>
+			<button type="button" id="copy-options" class="btn">Opzioni copia</button>
+			<button type="button" id="copy-list" class="btn primary">Copia</button>
+		</footer>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
