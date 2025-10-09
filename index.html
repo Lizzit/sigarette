@@ -8,147 +8,111 @@
 </head>
 <body>
     <div class="container">
-        <!-- Parte Superiore -->
+        <!-- PARTE SUPERIORE -->
         <header class="top-section">
-            <h1>Gestione Lista Sigarette</h1>
-            
-            <!-- Sistema di Filtraggio -->
-            <div class="filter-section">
+            <div class="filters">
                 <h3>Filtri</h3>
-                <div class="filter-controls">
-                    <div class="filter-group">
-                        <label for="filterMarca">Marca:</label>
-                        <select id="filterMarca">
-                            <option value="">Tutte</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="filterTipoPacchetto">Tipo Pacchetto:</label>
-                        <select id="filterTipoPacchetto">
-                            <option value="">Tutti</option>
-                            <option value="morbido">Morbido</option>
-                            <option value="duro">Duro</option>
-                        </select>
-                    </div>
-                    <button id="btnPulisciFiltro" class="btn btn-secondary">Pulisci Filtro</button>
+                <div class="filter-group">
+                    <label for="filter-brand">Marca:</label>
+                    <select id="filter-brand">
+                        <option value="">Tutte</option>
+                    </select>
                 </div>
+                <div class="filter-group">
+                    <label for="filter-package">Tipo pacchetto:</label>
+                    <select id="filter-package">
+                        <option value="">Tutti</option>
+                        <option value="morbido">Morbido</option>
+                        <option value="duro">Duro</option>
+                    </select>
+                </div>
+                <button id="clear-filters" class="btn btn-secondary">Pulisci filtro</button>
             </div>
-
-            <!-- Pulsanti Azione -->
+            
             <div class="action-buttons">
-                <button id="btnModificaLista" class="btn btn-primary">Modifica Lista</button>
-                <button id="btnEsportaLista" class="btn btn-primary">Esporta Lista</button>
-                <button id="btnImportaLista" class="btn btn-primary">Importa Lista</button>
-                <button id="btnOpzioniVisualizzazione" class="btn btn-primary">Opzioni Visualizzazione</button>
+                <button id="edit-list" class="btn btn-primary">Modifica lista</button>
+                <button id="export-list" class="btn btn-secondary">Esporta lista</button>
+                <button id="import-list" class="btn btn-secondary">Importa lista</button>
+                <button id="export-settings" class="btn btn-secondary">Esporta impostazioni</button>
+                <button id="import-settings" class="btn btn-secondary">Importa impostazioni</button>
+                <button id="display-options" class="btn btn-secondary">Opzioni visualizzazione</button>
             </div>
         </header>
 
-        <!-- Parte Centrale: Lista -->
-        <main class="main-section">
-            <div id="listaContainer" class="lista-container">
-                <!-- Le sezioni verranno generate dinamicamente -->
-            </div>
+        <!-- PARTE CENTRALE -->
+        <main class="main-section" id="items-container">
+            <!-- Le sezioni verranno generate dinamicamente -->
         </main>
 
-        <!-- Parte Inferiore -->
+        <!-- PARTE INFERIORE -->
         <footer class="bottom-section">
-            <button id="btnInvertiSelezione" class="btn btn-secondary">Inverti Selezione</button>
-            <button id="btnOpzioniCopia" class="btn btn-secondary">Opzioni Copia</button>
-            <button id="btnCopia" class="btn btn-success">Copia</button>
+            <button id="invert-selection" class="btn btn-secondary">Invertire selezione</button>
+            <button id="copy-options" class="btn btn-secondary">Opzioni copia</button>
+            <button id="copy-btn" class="btn btn-primary">Copia</button>
         </footer>
     </div>
 
-    <!-- Modal per Modifica Lista -->
-    <div id="modalModifica" class="modal">
+    <!-- MODAL PER MODIFICA LISTA -->
+    <div id="edit-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Modifica Lista</h2>
-            <div class="modal-body">
-                <div class="form-section">
-                    <h3>Aggiungi/Modifica Elemento</h3>
-                    <form id="formElemento">
-                        <input type="hidden" id="editIndex" value="">
-                        <div class="form-group">
-                            <label for="inputNome">Nome:</label>
-                            <input type="text" id="inputNome" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCodice">Codice:</label>
-                            <input type="text" id="inputCodice" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPrezzo">Prezzo (€):</label>
-                            <input type="number" id="inputPrezzo" step="0.01" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputMarca">Marca:</label>
-                            <input type="text" id="inputMarca" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputTipoPacchetto">Tipo Pacchetto:</label>
-                            <select id="inputTipoPacchetto" required>
-                                <option value="morbido">Morbido</option>
-                                <option value="duro">Duro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputSezione">Sezione:</label>
-                            <input type="text" id="inputSezione" required>
-                        </div>
-                        <button type="submit" class="btn btn-success">Salva Elemento</button>
-                    </form>
-                </div>
-                <div class="list-section">
-                    <h3>Elementi Correnti</h3>
-                    <div id="listaModifica" class="lista-modifica">
-                        <!-- Lista elementi per modifica/riordino -->
-                    </div>
-                </div>
+            
+            <div class="edit-sections">
+                <h3>Gestione Sezioni</h3>
+                <div id="sections-list"></div>
+                <button id="add-section" class="btn btn-primary">Aggiungi sezione</button>
             </div>
+            
+            <div class="edit-items">
+                <h3>Gestione Elementi</h3>
+                <div id="edit-items-list"></div>
+                <button id="add-item" class="btn btn-primary">Aggiungi elemento</button>
+            </div>
+            
+            <button id="save-changes" class="btn btn-success">Salva modifiche</button>
         </div>
     </div>
 
-    <!-- Modal per Opzioni Visualizzazione -->
-    <div id="modalVisualizzazione" class="modal">
-        <div class="modal-content modal-small">
+    <!-- MODAL PER OPZIONI VISUALIZZAZIONE -->
+    <div id="display-modal" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Opzioni Visualizzazione</h2>
-            <div class="modal-body">
-                <div class="checkbox-group">
-                    <label><input type="checkbox" id="showNome" checked> Nome</label>
-                    <label><input type="checkbox" id="showCodice" checked> Codice</label>
-                    <label><input type="checkbox" id="showPrezzo" checked> Prezzo</label>
-                    <label><input type="checkbox" id="showMarca" checked> Marca</label>
-                    <label><input type="checkbox" id="showTipoPacchetto" checked> Tipo Pacchetto</label>
-                    <label><input type="checkbox" id="showSezione" checked> Sezione</label>
-                </div>
-                <button id="btnApplicaVisualizzazione" class="btn btn-success">Applica</button>
+            <div class="display-options">
+                <label><input type="checkbox" id="show-name" checked> Mostra Nome</label>
+                <label><input type="checkbox" id="show-code" checked> Mostra Codice</label>
+                <label><input type="checkbox" id="show-price" checked> Mostra Prezzo</label>
+                <label><input type="checkbox" id="show-brand" checked> Mostra Marca</label>
+                <label><input type="checkbox" id="show-package" checked> Mostra Tipo pacchetto</label>
+                <label><input type="checkbox" id="show-section" checked> Mostra Sezione</label>
             </div>
+            <button id="save-display-options" class="btn btn-success">Salva</button>
         </div>
     </div>
 
-    <!-- Modal per Opzioni Copia -->
-    <div id="modalCopia" class="modal">
-        <div class="modal-content modal-small">
+    <!-- MODAL PER OPZIONI COPIA -->
+    <div id="copy-options-modal" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Opzioni Copia</h2>
-            <div class="modal-body">
-                <div class="checkbox-group">
-                    <label><input type="checkbox" id="copyNome" checked> Nome</label>
-                    <label><input type="checkbox" id="copyCodice" checked> Codice</label>
-                    <label><input type="checkbox" id="copyPrezzo" checked> Prezzo</label>
-                    <label><input type="checkbox" id="copyMarca" checked> Marca</label>
-                    <label><input type="checkbox" id="copyTipoPacchetto" checked> Tipo Pacchetto</label>
-                    <label><input type="checkbox" id="copySezione" checked> Sezione</label>
-                </div>
-                <button id="btnApplicaCopia" class="btn btn-success">Applica</button>
+            <div class="copy-options">
+                <label><input type="checkbox" id="copy-name" checked> Copia Nome</label>
+                <label><input type="checkbox" id="copy-code" checked> Copia Codice</label>
+                <label><input type="checkbox" id="copy-price" checked> Copia Prezzo</label>
+                <label><input type="checkbox" id="copy-brand" checked> Copia Marca</label>
+                <label><input type="checkbox" id="copy-package" checked> Copia Tipo pacchetto</label>
+                <label><input type="checkbox" id="copy-section" checked> Copia Sezione</label>
+                <label><input type="checkbox" id="copy-include-labels" checked> Includi etichette</label>
             </div>
+            <button id="save-copy-options" class="btn btn-success">Salva</button>
         </div>
     </div>
 
-    <!-- Input nascosto per importazione file -->
-    <input type="file" id="fileInput" accept=".json" style="display: none;">
+    <input type="file" id="import-file-input" style="display: none;" accept=".json">
+    <input type="file" id="import-settings-input" style="display: none;" accept=".json">
 
     <script src="script.js"></script>
 </body>
 </html>
+
