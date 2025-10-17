@@ -567,17 +567,17 @@ function addItem() {
         return;
     }
 
-    const firstSection = appData.sections[0];
-    const sectionItems = appData.items.filter(i => i.sectionId === firstSection.id);
+    const lastSection = appData.sections[-1];
+    const sectionItems = appData.items.filter(i => i.sectionId === lastSection.id);
 
     const newItem = {
         id: Date.now(),
         name: 'Nuovo elemento',
-        code: 'NEW' + Date.now(),
+        code: 'NEW',
         price: 0,
         brand: 'Marca',
         package: 'duro',
-        sectionId: firstSection.id,
+        sectionId: lastSection.id,
         order: sectionItems.length
     };
 
